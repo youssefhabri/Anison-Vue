@@ -5,22 +5,22 @@
       <ul class="uk-slideshow-items">
           <li v-for="(songs, idx) in songs.slice(0, 5)" :key="idx">
             <img :src="songs.cover" alt="" uk-cover>
-            <div class="uk-position-center uk-panel"><h1 class="slidetext">{{ songs.artist }} - {{ songs.name }}</h1></div>
+            <div class="uk-position-center uk-panel"><h1 class="slidetext"><router-link :to="{ name: 'play', query: { id: songs.identifier }}">{{ songs.artist }} - {{ songs.name }}</router-link></h1></div>
           </li>
       </ul>
     </div>
-    <aplayer/>
+    <playlist/>
   </div>
 </template>
 
 <script>
 import { db } from '@/main.js';
-import aplayer from '@/components/Player.vue';
+import playlist from '@/components/Player.vue';
 
 export default {
   name: 'home',
   components: {
-    aplayer
+    playlist
   },
   data () {
     return {
@@ -36,10 +36,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.slidetext, .slidetext:lang(ja-jp) {
+.slidetext a, .slidetext:lang(ja-jp) a {
   font-size: 60px; 
   font-weight: 500; 
   -webkit-text-stroke: 1px black;
   text-stroke: 1px black;
+  text-decoration: none;
 }
 </style>

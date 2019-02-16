@@ -50,7 +50,8 @@ export default {
         cover,
         url,
         anime: { title: animetitle, id: animeid },
-        createdAt
+        createdAt,
+        identifier: Math.random().toString(36).substr(2, 10)
       })
     }
   }

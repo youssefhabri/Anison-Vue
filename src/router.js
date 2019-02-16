@@ -5,6 +5,7 @@ import Router from 'vue-router';
 import Home from '@/views/Home';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
+import Play from '@/views/Play';
 import Admin from '@/views/Admin';
 
 Vue.use(Router);
@@ -42,6 +43,14 @@ const router = new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/play',
+      name: 'play',
+      component: Play,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/admin',

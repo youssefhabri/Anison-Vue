@@ -19,13 +19,13 @@
     <a @click="githubLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-github fa-3x"></i></a>
     <a @click="googleLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-google fa-3x"></i></a>
     <a @click="twitterLogin" class="uk-icon-button"><i class="fab fa-twitter fa-3x"></i></a>
-    <aplayer/>
+    <playlist/>
   </div>
 </template>
 
 <script>
 import firebase from 'firebase';
-import aplayer from '@/components/Player.vue';
+import playlist from '@/components/Player.vue';
 
 export default {
   name: 'login',
@@ -36,7 +36,7 @@ export default {
     }
   },
   components: {
-    aplayer
+    playlist
   },
   methods: {
     login: function() {
