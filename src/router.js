@@ -10,7 +10,7 @@ import Admin from '@/views/Admin';
 Vue.use(Router);
 
 const admins = [
-  'deterimo@gmail.com'
+  "HOvoQ6cWmyMyJAJ7m9uk3I8hnqg2"
 ];
 
 const router = new Router({
@@ -63,11 +63,11 @@ router.beforeEach((to, from, next) => {
 
   if (currentUser) {
     requiresAdmin = to.matched.some(record => record.meta.requiresAdmin);
-    isAdmin = admins.includes(currentUser.email);
+    isAdmin = admins.includes(currentUser.uid);
   }
 
   if (requiresAuth && !currentUser) next('login');
-  else if (requiresAuth && requiresAdmin && isAdmin) next('admin');
+  else if (!requiresAuth && requiresAdmin && isAdmin) next('admin');
   else if (!requiresAuth && currentUser) next('home');
   else next();
 });

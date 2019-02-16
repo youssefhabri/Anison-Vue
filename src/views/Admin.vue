@@ -1,6 +1,7 @@
 <template>
   <div class="admin">
-    <form @submit="addSong(name, artist, cover, url, animetitle, animeid)">
+    <h3>Add new song</h3>
+    <div @submit="addSong(name, artist, cover, url, animetitle, animeid)">
       <input class="uk-input uk-form-width-large" v-model="name" placeholder="Song Name"><br>
       <input class="uk-input uk-form-width-large" v-model="artist" placeholder="Song Artist"><br>
       <input class="uk-input uk-form-width-large" v-model="cover" placeholder="Song Cover"><br>
@@ -8,7 +9,7 @@
       <input class="uk-input uk-form-width-large" v-model="animetitle" placeholder="Anime Title"><br>
       <input class="uk-input uk-form-width-large" v-model="animeid" placeholder="Anime ID"><br>
       <button class="uk-button uk-button-primary uk-margin-small-top" type="submit">Add new song</button>
-    </form>
+    </div>
     <aplayer ref="aplayer" :audio="songs" fixed :mini="true"/>
   </div>
 </template>

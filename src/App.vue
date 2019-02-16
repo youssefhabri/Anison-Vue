@@ -10,9 +10,9 @@
       </div>
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-          <li><router-link to="/login">Login</router-link></li>
-          <li><router-link to="/register">Register</router-link></li>
-          <li><a @click="logout">Log out</a></li>
+          <li v-if="user == null"><router-link to="/login">Login</router-link></li>
+          <li v-if="user == null"><router-link to="/register">Register</router-link></li>
+          <li v-if="user !== null"><a @click="logout">Log out</a></li>
         </ul>
       </div>
     </nav>
@@ -24,6 +24,11 @@
 import firebase from 'firebase';
 
 export default {
+  data() {
+    return {
+      user: firebase.auth().currentUser
+    }
+  },
   methods: {
     logout: function() {
       firebase.auth().signOut().then(() => {

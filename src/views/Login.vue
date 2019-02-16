@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <h3>Login</h3>
-    <form>
+    <div>
       <fieldset class="uk-fieldset">
         <div class="uk-margin">
           <input class="uk-input" type="text" placeholder="E-mail" v-model="email">
@@ -13,7 +13,7 @@
           <button @click="login" class="uk-button uk-button-primary">Login</button>
         </div>
       </fieldset>
-    </form>
+    </div>
     <p>You don't have an account ? You can create one <router-link to="/register">here</router-link></p>
     <a @click="facebookLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-facebook fa-3x"></i></a>
     <a @click="githubLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-github fa-3x"></i></a>
