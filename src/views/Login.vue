@@ -11,68 +11,74 @@
     <button @click="facebookLogin">Facebook</button>
     <button @click="twitterLogin">Twitter</button>
     <button @click="githubLogin">GitHub</button>
+    <aplayer/>
   </div>
 </template>
 
 <script>
-  import firebase from 'firebase';
-  export default {
-    name: 'login',
-    data() {
-      return {
-        email: '',
-        password: ''
-      }
+import firebase from 'firebase';
+import aplayer from '@/components/Player.vue';
+
+export default {
+  name: 'login',
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  components: {
+    aplayer
+  },
+  methods: {
+    login: function() {
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
+        (user) => { // eslint-disable-line
+          this.$router.replace('home')
+        },
+        (err) => {
+          alert('Oops. ' + err.message)
+        }
+      );
     },
-    methods: {
-      login: function() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-          (user) => { // eslint-disable-line
-            this.$router.replace('home')
-          },
-          (err) => {
-            alert('Oops. ' + err.message)
-          }
-        );
-      },
-      googleLogin: function() {
-        const provider = new firebase.auth.GoogleAuthProvider();
+    googleLogin: function() {
+      const provider = new firebase.auth.GoogleAuthProvider();
 
-        firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
-          this.$router.replace('home');
-        }).catch((err) => {
-          alert('Oops. ' + err.message)
-        });
-      },
-      facebookLogin: function() {
-        const provider = new firebase.auth.FacebookAuthProvider();
+      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
+        this.$router.replace('home');
+      }).catch((err) => {
+        alert('Oops. ' + err.message)
+      });
+    },
+    facebookLogin: function() {
+      const provider = new firebase.auth.FacebookAuthProvider();
 
-        firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
-          this.$router.replace('home');
-        }).catch((err) => {
-          alert('Oops. ' + err.message)
-        });
-      },
-      twitterLogin: function() {
-        const provider = new firebase.auth.TwitterAuthProvider();
+      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
+        this.$router.replace('home');
+      }).catch((err) => {
+        alert('Oops. ' + err.message)
+      });
+    },
+    twitterLogin: function() {
+      const provider = new firebase.auth.TwitterAuthProvider();
 
-        firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
-          this.$router.replace('home');
-        }).catch((err) => {
-          alert('Oops. ' + err.message)
-        });
-      },
-      githubLogin: function() {
-        const provider = new firebase.auth.GithubAuthProvider();
+      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
+        this.$router.replace('home');
+      }).catch((err) => {
+        alert('Oops. ' + err.message)
+      });
+    },
+    githubLogin: function() {
+      const provider = new firebase.auth.GithubAuthProvider();
 
-        firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
-          this.$router.replace('home');
-        }).catch((err) => {
-          alert('Oops. ' + err.message)
-        });
-      }
+      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
+        this.$router.replace('home');
+      }).catch((err) => {
+        alert('Oops. ' + err.message)
+      });
     }
   }
+}
 </script>
 
 <style scoped>

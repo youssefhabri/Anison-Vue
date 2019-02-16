@@ -5,36 +5,41 @@
     <input type="password" v-model="password" placeholder="Password"><br>
     <button @click="register">Register</button>
     <span>or go back to <router-link to="/login">login</router-link>.</span>
+    <aplayer/>
   </div>
 </template>
 
- <script>
-  import firebase from 'firebase';
+<script>
+import firebase from 'firebase';
+import aplayer from '@/components/Player.vue';
 
-  export default {
-    name: 'register',
-    data() {
-      return {
-        email: '',
-        password: ''
-      }
-    },
-    methods: {
-      register: function() {
-        firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
-          (user) => { // eslint-disable-line
-            this.$router.replace('home')
-          },
-          (err) => {
-            alert('Oops. ' + err.message)
-          }
-        );
-      }
+export default {
+  name: 'register',
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  components: {
+    aplayer
+  },
+  methods: {
+    register: function() {
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
+        (user) => { // eslint-disable-line
+          this.$router.replace('home')
+        },
+        (err) => {
+          alert('Oops. ' + err.message)
+        }
+      );
     }
   }
+}
 </script>
 
- <style scoped>
+<style scoped>
   .register {
     margin-top: 40px;
   }

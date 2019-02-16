@@ -10,23 +10,21 @@
         <p>{{ songs.artist }}</p>
       </div>
     </div>
-    <aplayer ref="aplayer" :audio="songs" fixed :mini="true"/>
     <button @click="logout">Logout</button>
+    <aplayer/>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
 import firebase from 'firebase';
 import { db } from '@/main.js';
-import APlayer from '@moefe/vue-aplayer';
-
-Vue.use(APlayer, {
-  productionTip: false,
-});
+import aplayer from '@/components/Player.vue';
 
 export default {
   name: 'home',
+  components: {
+    aplayer
+  },
   data () {
     return {
       songs: []
@@ -46,9 +44,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.aplayer .aplayer-list li {
-    text-align: left;
-}
-</style>
