@@ -1,16 +1,24 @@
 <template>
   <div class="login">
-    <h3>Sign In</h3>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
-    <button @click="login">Connection</button>
-    <p>You don't have an account ? You can <router-link to="/register">create one</router-link></p>
-    <hr>
-    <h3>Social Login</h3>
-    <button @click="googleLogin">Google</button>
-    <button @click="facebookLogin">Facebook</button>
-    <button @click="twitterLogin">Twitter</button>
-    <button @click="githubLogin">GitHub</button>
+    <h3>Login</h3>
+    <form>
+      <fieldset class="uk-fieldset">
+        <div class="uk-margin">
+          <input class="uk-input" type="text" placeholder="E-mail" v-model="email">
+        </div>
+        <div class="uk-margin">
+          <input class="uk-input" type="text" placeholder="Password" v-model="password">
+        </div>
+        <div class="uk-margin">
+          <button @click="login" class="uk-button uk-button-primary">Login</button>
+        </div>
+      </fieldset>
+    </form>
+    <p>You don't have an account ? You can create one <router-link to="/register">here</router-link></p>
+    <a @click="facebookLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-facebook fa-3x"></i></a>
+    <a @click="githubLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-github fa-3x"></i></a>
+    <a @click="googleLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-google fa-3x"></i></a>
+    <a @click="twitterLogin" class="uk-icon-button"><i class="fab fa-twitter fa-3x"></i></a>
     <aplayer/>
   </div>
 </template>
@@ -85,19 +93,13 @@ export default {
   .login {
     margin-top: 40px;
   }
-  input {
-    margin: 10px 0;
-    width: 20%;
-    padding: 15px;
-  }
+  input,
   button {
-    margin-top: 20px;
-    width: 10%;
-    cursor: pointer;
+    width: 25%;
   }
   p {
-    margin-top: 40px;
-    font-size: 13px;
+    margin-top: 5px;
+    font-size: 12px;
   }
   p a {
     text-decoration: underline;

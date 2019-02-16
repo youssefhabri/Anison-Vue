@@ -1,11 +1,15 @@
 import Vue from 'vue';
-import firebase from 'firebase';
-import VueFire from 'vuefire';
 import App from './App.vue';
 import router from './router';
+
+import firebase from 'firebase';
+import VueFire from 'vuefire';
+import firecreds from '../firecreds.json';
+
 import 'uikit';
 import 'uikit/dist/css/uikit.min.css';
-import firecreds from '../firecreds.json';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/js/all.min.js';
 
 Vue.config.productionTip = false;
 Vue.use(VueFire);

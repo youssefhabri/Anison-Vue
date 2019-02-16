@@ -10,13 +10,11 @@
         <p>{{ songs.artist }}</p>
       </div>
     </div>
-    <button @click="logout">Logout</button>
     <aplayer/>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase';
 import { db } from '@/main.js';
 import aplayer from '@/components/Player.vue';
 
@@ -33,13 +31,6 @@ export default {
   firestore () {
     return {
       songs: db.collection('songs').orderBy('name')
-    }
-  },
-  methods: {
-    logout: function() {
-      firebase.auth().signOut().then(() => {
-        this.$router.replace('login')
-      })
     }
   }
 }

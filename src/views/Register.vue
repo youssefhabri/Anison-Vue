@@ -1,10 +1,24 @@
 <template>
   <div class="register">
-    <p>Let's create a new account !</p>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
-    <button @click="register">Register</button>
-    <span>or go back to <router-link to="/login">login</router-link>.</span>
+    <h3>Register</h3>
+    <form>
+      <fieldset class="uk-fieldset">
+        <div class="uk-margin">
+          <input class="uk-input" type="text" placeholder="E-mail" v-model="email">
+        </div>
+        <div class="uk-margin">
+          <input class="uk-input" type="text" placeholder="Password" v-model="password">
+        </div>
+        <div class="uk-margin">
+          <button @click="register" class="uk-button uk-button-primary">Register</button>
+        </div>
+      </fieldset>
+    </form>
+    <p>or go back to <router-link to="/login">login</router-link>.</p>
+    <a @click="facebookLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-facebook fa-3x"></i></a>
+    <a @click="githubLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-github fa-3x"></i></a>
+    <a @click="googleLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-google fa-3x"></i></a>
+    <a @click="twitterLogin" class="uk-icon-button"><i class="fab fa-twitter fa-3x"></i></a>
     <aplayer/>
   </div>
 </template>
@@ -34,6 +48,42 @@ export default {
           alert('Oops. ' + err.message)
         }
       );
+    },
+    googleLogin: function() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
+        this.$router.replace('home');
+      }).catch((err) => {
+        alert('Oops. ' + err.message)
+      });
+    },
+    facebookLogin: function() {
+      const provider = new firebase.auth.FacebookAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
+        this.$router.replace('home');
+      }).catch((err) => {
+        alert('Oops. ' + err.message)
+      });
+    },
+    twitterLogin: function() {
+      const provider = new firebase.auth.TwitterAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
+        this.$router.replace('home');
+      }).catch((err) => {
+        alert('Oops. ' + err.message)
+      });
+    },
+    githubLogin: function() {
+      const provider = new firebase.auth.GithubAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
+        this.$router.replace('home');
+      }).catch((err) => {
+        alert('Oops. ' + err.message)
+      });
     }
   }
 }
@@ -43,19 +93,16 @@ export default {
   .register {
     margin-top: 40px;
   }
-  input {
-    margin: 10px 0;
-    width: 20%;
-    padding: 15px;
-  }
+  input,
   button {
-    margin-top: 10px;
-    width: 10%;
-    cursor: pointer;
+    width: 25%;
   }
-  span {
-    display: block;
-    margin-top: 20px;
-    font-size: 11px;
+  p {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  p a {
+    text-decoration: underline;
+    cursor: pointer;
   }
 </style>

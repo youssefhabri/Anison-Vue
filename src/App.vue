@@ -1,15 +1,44 @@
+
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/home">Home</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/register">Register</router-link>
-    </div>
+    <nav class="uk-navbar-container uk-margin uk-navbar-transparent" uk-navbar="mode: click">
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li class="uk-active"><a href="#">Anison</a></li>
+          <li><router-link to="/home">Home</router-link></li>
+        </ul>
+      </div>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li><router-link to="/login">Login</router-link></li>
+          <li><router-link to="/register">Register</router-link></li>
+          <li><a @click="logout">Log out</a></li>
+        </ul>
+      </div>
+    </nav>
     <router-view/>
   </div>
 </template>
 
+<script>
+import firebase from 'firebase';
+
+export default {
+  methods: {
+    logout: function() {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('login')
+      })
+    }
+  }
+}
+</script>
+
 <style>
+:root {
+  background-color: whitesmoke;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
