@@ -1,13 +1,14 @@
 <template>
   <div class="admin">
     <h3>Add new song</h3>
-    <div @submit="addSong(name, artist, cover, url, animetitle, animeid)">
+    <div @submit="addSong(name, artist, cover, url, animetitle, animeid, youtubeid)">
       <input class="uk-input uk-form-width-large" v-model="name" placeholder="Song Name"><br>
       <input class="uk-input uk-form-width-large" v-model="artist" placeholder="Song Artist"><br>
       <input class="uk-input uk-form-width-large" v-model="cover" placeholder="Song Cover"><br>
       <input class="uk-input uk-form-width-large" v-model="url" placeholder="Song URL"><br>
       <input class="uk-input uk-form-width-large" v-model="animetitle" placeholder="Anime Title"><br>
       <input class="uk-input uk-form-width-large" v-model="animeid" placeholder="Anime ID"><br>
+      <input class="uk-input uk-form-width-large" v-model="youtubeid" placeholder="YouTube ID"><br>
       <button class="uk-button uk-button-primary uk-margin-small-top" type="submit">Add new song</button>
     </div>
     <aplayer ref="aplayer" :audio="songs" fixed :mini="true"/>
@@ -33,7 +34,8 @@ export default {
       cover: '',
       url: '',
       animetitle: '',
-      animeid: ''
+      animeid: '',
+      youtubeid: ''
     }
   },
   firestore () {
@@ -42,7 +44,7 @@ export default {
     }
   },
   methods: {
-    addSong (name, artist, cover, url, animetitle, animeid) {
+    addSong (name, artist, cover, url, animetitle, animeid, youtubeid) {
       const createdAt = new Date()
       db.collection('songs').add({
         name,
@@ -51,7 +53,8 @@ export default {
         url,
         anime: { title: animetitle, id: animeid },
         createdAt,
-        identifier: Math.random().toString(36).substr(2, 10)
+        identifier: Math.random().toString(36).substr(2, 10),
+        youtubeid
       })
     }
   }

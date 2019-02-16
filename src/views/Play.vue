@@ -2,10 +2,14 @@
   <div class="play">
     <h1>{{ song[0].artist }} - {{ song[0].name }}</h1>
     <h4 style="margin-top: 0px;"><a :href="'https://anilist.co/anime/' + song[0].anime.id">{{ song[0].anime.title }}</a></h4>
-    <center><aplayer style="max-width:50%;" ref="aplayer" :audio="song" />
+    <center>
+    <vue-plyr style="max-width: 50%;" class="uk-margin">
+      <div data-plyr-provider="youtube" :data-plyr-embed-id="song[0].youtubeid"></div>
+    </vue-plyr>
+    <aplayer style="max-width:50%;" ref="aplayer" :audio="song" />
     <button class="uk-button uk-button-primary uk-margin" @click="showCard" v-if="cardShown == false">Show anime info</button>
     <button class="uk-button uk-button-primary uk-margin" @click="showCard" v-if="cardShown == true">Hide anime info</button>
-    <div style="position: absolute; bottom: 0; width: 100%;" v-if="cardShown == true" class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s" uk-grid>
+    <div style="bottom: 0; width: 100%;" v-if="cardShown == true" class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
             <img :src="anime.bannerImage" alt="" uk-cover>
             <canvas width="600" height="400"></canvas>
@@ -21,7 +25,8 @@
                 </div>
             </div>
         </div>
-    </div></center>
+    </div>
+    </center>
     <playlist/>
   </div>
 </template>
@@ -31,10 +36,14 @@ import Vue from 'vue';
 import { db } from '@/main.js';
 import APlayer from '@moefe/vue-aplayer';
 import playlist from '@/components/Player.vue';
+import VuePlyr from 'vue-plyr';
+import 'vue-plyr/dist/vue-plyr.css';
 
 Vue.use(APlayer, {
   productionTip: false,
 });
+
+Vue.use(VuePlyr);
 
 export default {
   name: 'play',
@@ -126,17 +135,17 @@ export default {
 }
 
 .uk-progress-success { 
-  &::-webkit-progress-value { background-color: #36e527; };
-  &::-ms-fill { background-color: #36e527; };
+  &::-webkit-progress-value { background-color: #5cb85c; };
+  &::-ms-fill { background-color: #5cb85c; };
 }
 
 .uk-progress-warning { 
-  &::-webkit-progress-value { background-color: orange; };
-  &::-ms-fill { background-color: orange; };
+  &::-webkit-progress-value { background-color: #f0ad4e; };
+  &::-ms-fill { background-color: #f0ad4e; };
 }
 
 .uk-progress-danger { 
-  &::-webkit-progress-value { background-color: red; };
-  &::-ms-fill { background-color: red; };
+  &::-webkit-progress-value { background-color: #d9534f; };
+  &::-ms-fill { background-color: #d9534f; };
 }
 </style>
