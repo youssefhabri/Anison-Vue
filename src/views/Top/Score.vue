@@ -27,7 +27,7 @@ export default {
     var query = `
     query {
         Page (page: 1, perPage: 100) {
-            media (sort: SCORE_DESC) {
+            media (sort: SCORE_DESC, type: ANIME) {
                 id
                 title {
                     romaji
