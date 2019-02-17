@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import { db } from '@/main.js';
 import playlist from '@/components/Player.vue';
 
