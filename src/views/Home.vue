@@ -5,7 +5,7 @@
       <ul class="uk-slideshow-items">
           <li v-for="(songs, idx) in songs.slice(0, 5)" :key="idx">
             <img :src="songs.cover" alt="" uk-cover>
-            <div class="uk-position-center uk-panel"><h1 class="slidetext"><router-link :to="{ name: 'play', query: { id: songs.identifier }}">{{ songs.artist }} - {{ songs.name }}</router-link></h1></div>
+            <div class="uk-position-center uk-panel"><h1 class="slidetext"><router-link :to="{ name: 'play', params: { songid: songs.identifier }}">{{ songs.artist }} - {{ songs.name }}</router-link></h1></div>
           </li>
       </ul>
     </div>

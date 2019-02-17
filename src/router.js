@@ -41,9 +41,10 @@ const router = new Router({
       component: Register
     },
     {
-      path: '/play',
+      path: '/play/:songid',
       name: 'play',
       component: Play,
+      props: true,
       meta: {
         requiresAuth: true
       }

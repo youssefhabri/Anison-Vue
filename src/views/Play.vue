@@ -47,6 +47,9 @@ Vue.use(VuePlyr);
 
 export default {
   name: 'play',
+  props: [
+    'songid'
+  ],
   components: {
     playlist
   },
@@ -60,7 +63,7 @@ export default {
   },
   firestore () {
     return {
-      song: db.collection('songs').where("identifier", "==", this.$route.query.id)
+      song: db.collection('songs').where("identifier", "==", this.songid)
     }
   },
   methods: {
