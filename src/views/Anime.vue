@@ -85,7 +85,6 @@ export default {
         });
     }).then((data) => {
         this.anime = data.data.Media;
-        console.log(this.songs);
     }).catch((error) => {
         alert('Error. Check console.');
         console.log(error);

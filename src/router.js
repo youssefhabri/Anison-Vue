@@ -8,6 +8,8 @@ import Login from '@/views/Login';
 import Register from '@/views/Register';
 import Play from '@/views/Play';
 import Anime from '@/views/Anime';
+import Popularity from '@/views/Top/Popularity';
+import Score from '@/views/Top/Score';
 
 Vue.use(Router);
 
@@ -55,6 +57,22 @@ const router = new Router({
       name: 'anime',
       component: Anime,
       props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/top/popularity',
+      name: 'popularity',
+      component: Popularity,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/top/score',
+      name: 'Score',
+      component: Score,
       meta: {
         requiresAuth: true
       }

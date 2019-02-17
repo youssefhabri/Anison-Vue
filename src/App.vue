@@ -1,11 +1,20 @@
 
 <template>
   <div id="app">
-    <nav class="uk-navbar-container uk-margin uk-navbar-transparent" uk-navbar="mode: click">
+    <nav class="uk-navbar-container uk-margin uk-navbar-transparent" uk-navbar>
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
           <li class="uk-active"><a href="#">Anison</a></li>
           <li><router-link to="/home">Home</router-link></li>
+          <li>
+            <a href="#">Top</a>
+            <div style="margin-top: 0px;" class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><router-link to="/top/popularity">Popularity</router-link></li>
+                <li><router-link to="/top/score">Score</router-link></li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
       <div class="uk-navbar-right">

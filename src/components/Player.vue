@@ -20,7 +20,7 @@ export default {
   },
   firestore () {
     return {
-      songs: db.collection('songs').orderBy('name')
+      songs: db.collection('songs').orderBy('createdAt', 'desc')
     }
   }
 }
