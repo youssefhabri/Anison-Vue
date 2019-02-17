@@ -7,6 +7,7 @@ import Home from '@/views/Home';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
 import Play from '@/views/Play';
+import Anime from '@/views/Anime';
 
 Vue.use(Router);
 
@@ -44,6 +45,15 @@ const router = new Router({
       path: '/play/:songid',
       name: 'play',
       component: Play,
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/anime/:animeid',
+      name: 'anime',
+      component: Anime,
       props: true,
       meta: {
         requiresAuth: true

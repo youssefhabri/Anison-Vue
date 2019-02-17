@@ -1,7 +1,7 @@
 <template>
   <div class="play">
     <h1>{{ song[0].artist }} - {{ song[0].name }}</h1>
-    <h4 style="margin-top: 0px;"><a :href="'https://anilist.co/anime/' + song[0].anime.id">{{ song[0].anime.title }}</a></h4>
+    <h4 style="margin-top: 0px;"><router-link :to="{ name: 'anime', params: { animeid: song[0].anime.id }}">{{song[0].anime.title}}</router-link></h4>
     <center>
     <vue-plyr style="max-width: 50%;" class="uk-margin">
       <div data-plyr-provider="youtube" :data-plyr-embed-id="song[0].youtubeid"></div>
