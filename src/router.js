@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import Vue from 'vue';
 import Router from 'vue-router';
+import VueAnalytics from 'vue-ua';
 
 import Home from '@/views/Home';
 import Login from '@/views/Login';
@@ -62,6 +63,14 @@ const router = new Router({
       }
     }
   ]
+});
+
+Vue.use(VueAnalytics, {
+  appName: 'Anison',
+  appVersion: '1.0',
+  trackingId: 'UA-83961889-5',
+  vueRouter: router,
+  trackPage: true, 
 });
 
 router.beforeEach((to, from, next) => {
