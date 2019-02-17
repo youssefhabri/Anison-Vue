@@ -1,4 +1,3 @@
-import firebase from 'firebase';
 import Vue from 'vue';
 import Router from 'vue-router';
 import VueAnalytics from 'vue-ua';
@@ -28,10 +27,7 @@ const router = new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Home,
-      meta: {
-        requiresAuth: true
-      }
+      component: Home
     },
     {
       path: '/login',
@@ -47,35 +43,23 @@ const router = new Router({
       path: '/play/:songid',
       name: 'play',
       component: Play,
-      props: true,
-      meta: {
-        requiresAuth: true
-      }
+      props: true
     },
     {
       path: '/anime/:animeid',
       name: 'anime',
       component: Anime,
-      props: true,
-      meta: {
-        requiresAuth: true
-      }
+      props: true
     },
     {
       path: '/top/popularity',
       name: 'popularity',
-      component: Popularity,
-      meta: {
-        requiresAuth: true
-      }
+      component: Popularity
     },
     {
       path: '/top/score',
       name: 'Score',
-      component: Score,
-      meta: {
-        requiresAuth: true
-      }
+      component: Score
     }
   ]
 });
@@ -86,15 +70,6 @@ Vue.use(VueAnalytics, {
   trackingId: 'UA-83961889-5',
   vueRouter: router,
   trackPage: true, 
-});
-
-router.beforeEach((to, from, next) => {
-  const currentUser = firebase.auth().currentUser;
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-
-  if (requiresAuth && !currentUser) next('login');
-  else if (!requiresAuth && currentUser) next('home');
-  else next();
 });
 
 export default router;
