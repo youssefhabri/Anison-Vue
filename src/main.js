@@ -4,7 +4,7 @@ import router from './router';
 
 import firebase from 'firebase';
 import VueFire from 'vuefire';
-import firecreds from '../firecreds.json';
+import { firecreds } from '../config.js';
 
 import 'uikit';
 import 'uikit/dist/css/uikit.min.css';
