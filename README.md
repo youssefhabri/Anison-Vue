@@ -1,29 +1,14 @@
 # Anison.ga
 
-## Project setup
-```
-yarn install
-```
+## A rewrite of Anison.ga in Vue
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+### Prerequisites
+- Node
+- Yarn
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your tests
-```
-yarn test
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Get started
+- Clone the repository
+- Open the folder and run `yarn install`
+- Rename `config.example.js` to `config.js` and input your Firebase credentials
+- Add songs to your Firebase database, a screenshot of current structure is [here](https://i.imgur.com/xlc5RBR.png)
+- Run `yarn serve` and voilà
