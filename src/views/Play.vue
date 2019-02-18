@@ -3,10 +3,12 @@
     <h1>{{ song[0].artist }} - {{ song[0].name }}</h1>
     <h4 style="margin-top: 0px;"><router-link :to="{ name: 'anime', params: { animeid: song[0].anime.id }}">{{song[0].anime.title}}</router-link></h4>
     <center>
-    <vue-plyr style="max-width: 50%;" class="uk-margin">
-      <div data-plyr-provider="youtube" :data-plyr-embed-id="song[0].youtubeid"></div>
-    </vue-plyr>
-    <aplayer style="max-width:50%;" ref="aplayer" :audio="song" />
+    <div class="uk-margin uk-child-width-1-2@xl uk-child-width-1-1">
+      <vue-plyr>
+        <div data-plyr-provider="youtube" :data-plyr-embed-id="song[0].youtubeid"></div>
+      </vue-plyr>
+      <aplayer ref="aplayer" :audio="song" />
+    </div>
     <button class="uk-button uk-button-primary uk-margin" @click="showCard" v-if="cardShown == false">Show anime info</button>
     <button class="uk-button uk-button-primary uk-margin" @click="showCard" v-if="cardShown == true">Hide anime info</button>
     <div style="bottom: 0; width: 100%;" v-if="cardShown == true" class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s" uk-grid>

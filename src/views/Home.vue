@@ -9,18 +9,36 @@
           </li>
       </ul>
     </div>
+    <div class="uk-margin uk-margin-left-medium uk-margin-right-medium">
+      <h1>Airing this season</h1>
+      <season/>
+    </div>
+    <div class="uk-margin">
+      <h1>Popular anime</h1>
+      <popularity/>
+    </div>
+    <div class="uk-margin">
+      <h1>Highly rated anime</h1>
+      <score/>
+    </div>
     <playlist/>
   </div>
 </template>
 
 <script>
 import { db } from '@/main.js';
-import playlist from '@/components/Player.vue';
+import playlist from '@/components/Player';
+import popularity from '@/components/Home/Top/Popularity';
+import score from '@/components/Home/Top/Score';
+import season from '@/components/Home/Top/Season';
 
 export default {
   name: 'home',
   components: {
-    playlist
+    playlist,
+    season,
+    popularity,
+    score
   },
   data () {
     return {
