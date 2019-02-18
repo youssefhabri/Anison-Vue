@@ -11,8 +11,11 @@ import 'uikit/dist/css/uikit.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@fortawesome/fontawesome-free/js/all.min.js';
 
+import VueLazyload from 'vue-lazyload';
+
 Vue.config.productionTip = false;
 Vue.use(VueFire);
+Vue.use(VueLazyload);
 
 let app = '';
 

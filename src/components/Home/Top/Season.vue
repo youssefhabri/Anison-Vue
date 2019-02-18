@@ -4,7 +4,7 @@
             <div class="uk-slider-container uk-light">
                 <ul class="uk-slider-items uk-grid uk-child-width-auto">
                     <li v-for="(anime, idx) in anime" :key="idx">
-                        <router-link :to="{ name: 'anime', params: { animeid: anime.id }}"><img class="uk-height-medium uk-height-large@s" :src="anime.coverImage.extraLarge" :alt="anime.title.romaji"></router-link>
+                        <router-link :to="{ name: 'anime', params: { animeid: anime.id }}"><img class="uk-height-medium uk-height-large@s" v-lazy="anime.coverImage.extraLarge" :alt="anime.title.romaji"></router-link>
                     </li>
                 </ul>
             </div>

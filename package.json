@@ -16,6 +16,7 @@
     "style-loader": "^0.23.1",
     "uikit": "^3.0.3",
     "vue": "^2.5.22",
+    "vue-lazyload": "^1.2.6",
     "vue-plyr": "^5.1.0",
     "vue-router": "^3.0.1",
     "vue-ua": "^1.5.0",
