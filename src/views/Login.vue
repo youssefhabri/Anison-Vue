@@ -15,10 +15,10 @@
       </fieldset>
     </div>
     <p>You don't have an account ? You can create one <router-link to="/register">here</router-link></p>
-    <a @click="facebookLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-facebook fa-3x"></i></a>
-    <a @click="githubLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-github fa-3x"></i></a>
-    <a @click="googleLogin" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-google fa-3x"></i></a>
-    <a @click="twitterLogin" class="uk-icon-button"><i class="fab fa-twitter fa-3x"></i></a>
+    <a @click="socialLogin('facebook')" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-facebook fa-3x"></i></a>
+    <a @click="socialLogin('github')" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-github fa-3x"></i></a>
+    <a @click="socialLogin('google')" class="uk-icon-button uk-margin-medium-right"><i class="fab fa-google fa-3x"></i></a>
+    <a @click="socialLogin('twitter')" class="uk-icon-button"><i class="fab fa-twitter fa-3x"></i></a>
     <playlist/>
   </div>
 </template>
@@ -49,35 +49,20 @@ export default {
         }
       );
     },
-    googleLogin: function() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-
-      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
-        this.$router.replace('home');
-      }).catch((err) => {
-        alert('Oops. ' + err.message)
-      });
-    },
-    facebookLogin: function() {
-      const provider = new firebase.auth.FacebookAuthProvider();
-
-      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
-        this.$router.replace('home');
-      }).catch((err) => {
-        alert('Oops. ' + err.message)
-      });
-    },
-    twitterLogin: function() {
-      const provider = new firebase.auth.TwitterAuthProvider();
-
-      firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
-        this.$router.replace('home');
-      }).catch((err) => {
-        alert('Oops. ' + err.message)
-      });
-    },
-    githubLogin: function() {
-      const provider = new firebase.auth.GithubAuthProvider();
+    socialLogin: function(site) {
+      console.log(site)
+      let provider = null;
+      if (site == "facebook") {
+        provider = new firebase.auth.FacebookAuthProvider();
+      } else if (site == "github") {
+        provider = new firebase.auth.GithubAuthProvider();
+      } else if (site == "google") {
+        provider = new firebase.auth.GoogleAuthProvider();
+      } else if (site == "twitter") {
+        provider = new firebase.auth.TwitterAuthProvider();
+      } else {
+        alert('Error.');
+      }
 
       firebase.auth().signInWithPopup(provider).then((result) => { // eslint-disable-line
         this.$router.replace('home');

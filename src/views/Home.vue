@@ -1,64 +1,22 @@
 <template>
   <div class="home">
-    <h1>Latest songs</h1>
-    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: 1:1; min-height: 300; max-height: 300; animation: push; autoplay: true; autoplay-interval: 6000; pause-on-hover: true;">
-      <ul class="uk-slideshow-items">
-          <li v-for="(songs, idx) in songs.slice(0, 5)" :key="idx">
-            <img :src="songs.cover" alt="" uk-cover>
-            <div class="uk-position-center uk-panel"><h1 class="slidetext"><router-link :to="{ name: 'play', params: { songid: songs.identifier }}">{{ songs.artist }} - {{ songs.name }}</router-link></h1></div>
-          </li>
-      </ul>
-    </div>
-    <div class="uk-margin uk-margin-left-medium uk-margin-right-medium">
-      <h1>Airing this season</h1>
-      <season/>
-    </div>
-    <div class="uk-margin">
-      <h1>Popular anime</h1>
-      <popularity/>
-    </div>
-    <div class="uk-margin">
-      <h1>Highly rated anime</h1>
-      <score/>
-    </div>
+    <latest class="uk-margin uk-margin-left-medium uk-margin-right-medium"/>
+    <random class="uk-margin uk-margin-left-medium uk-margin-right-medium"/>
     <playlist/>
   </div>
 </template>
 
 <script>
-import { db } from '@/main.js';
 import playlist from '@/components/Player';
-import popularity from '@/components/Home/Top/Popularity';
-import score from '@/components/Home/Top/Score';
-import season from '@/components/Home/Top/Season';
+import latest from '@/components/Home/Latest';
+import random from '@/components/Home/Random';
 
 export default {
   name: 'home',
   components: {
     playlist,
-    season,
-    popularity,
-    score
-  },
-  data () {
-    return {
-      songs: []
-    }
-  },
-  firestore () {
-    return {
-      songs: db.collection('songs').orderBy('createdAt', 'desc')
-    }
+    latest,
+    random
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.slidetext a, .slidetext:lang(ja-jp) a {
-  font-size: 60px; 
-  font-weight: 500; 
-  -webkit-text-stroke: 1px black;
-  text-stroke: 1px black;
-  text-decoration: none;
-}
-</style>
