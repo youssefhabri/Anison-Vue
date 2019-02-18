@@ -6,6 +6,5 @@ before_install:
 script: yarn build
 deploy:
   provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
+  token: $FIREBASE_TOKEN
   skip_cleanup: true
