@@ -9,7 +9,8 @@
     ],
     "ignore": [
       "firebase.json",
-      "firecreds.example.json",
+      ".travis.yml",
+      ".env.example",
       "**/.*",
       "**/node_modules/**"
     ]

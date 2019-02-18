@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '11'
+before_install:
+- yarn global add @vue/cli
+script: yarn build
+deploy:
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
+  skip_cleanup: true

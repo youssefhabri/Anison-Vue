@@ -50,7 +50,6 @@ export default {
       );
     },
     socialLogin: function(site) {
-      console.log(site)
       let provider = null;
       if (site == "facebook") {
         provider = new firebase.auth.FacebookAuthProvider();

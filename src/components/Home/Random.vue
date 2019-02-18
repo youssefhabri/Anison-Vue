@@ -68,7 +68,7 @@ export default {
         this.anime = data.data.Page.media;
     }).catch((error) => {
         alert('Error. Check console.');
-        console.log(error);
+        console.log(error); // eslint-disable-line
     });
 }
 }
@@ -82,12 +82,7 @@ export default {
             color: black !important;
         }
         img {
-            border-radius: 10px;
             width: 100%;
-        }
-        .uk-overlay {
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
         }
     }
 

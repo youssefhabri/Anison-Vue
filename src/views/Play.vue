@@ -119,7 +119,7 @@ export default {
             this.anime = data.data.Media;
         }).catch((error) => {
             alert('Error. Check console.');
-            console.log(error);
+            console.log(error);  // eslint-disable-line
         });
     },
     showCard: function() {
