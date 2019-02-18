@@ -1,6 +1,6 @@
 <template>
     <div class="uk-margin-medium" uk-slider="autoplay: true; autoplay-interval: 3500;">
-        <div class="uk-position-relative">
+        <div class="uk-position-relative uk-margin-medium-left uk-margin-medium-right">
             <div class="uk-slider-container uk-light">
                 <ul class="uk-slider-items uk-grid uk-child-width-auto">
                     <li v-for="(anime, idx) in anime" :key="idx">
@@ -22,9 +22,9 @@ export default {
   },
   mounted: function() {
     var query = `
-    query {
-        Page (page: 1, perPage: 15) {
-            media (sort: SCORE_DESC, type: ANIME, format: TV) {
+    query ($perPage: Int, $sort: [MediaSort]) {
+        Page (page: 1, perPage: $perPage) {
+            media (sort: $sort, type: ANIME, format: TV) {
                 id
                 title {
                     romaji
@@ -37,6 +37,11 @@ export default {
         }
     }`;
 
+    var variables = {
+        perPage: 15,
+        sort: "SCORE_DESC",
+    };
+
     var url = 'https://graphql.anilist.co',
     options = {
         method: 'POST',
@@ -45,7 +50,8 @@ export default {
             'Accept': 'application/json',
         },
             body: JSON.stringify({
-                query: query
+                query: query,
+                variables: variables
         })
     };
 
