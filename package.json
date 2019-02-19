@@ -20,7 +20,7 @@
     "vue-lazyload": "^1.2.6",
     "vue-plyr": "^5.1.0",
     "vue-router": "^3.0.1",
-    "vue-ua": "^1.5.0",
+    "vue-ua": "^1.6.0",
     "vuefire": "^2.0.0-alpha.20"
   },
   "devDependencies": {
